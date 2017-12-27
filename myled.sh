@@ -6,37 +6,17 @@ sudo insmod myled.ko
 sudo chmod 666 /dev/myled0
 
 echo LEDの点滅を開始します.
+LED_COUNT=8
+i=0
 while :
 do
-	echo 1 > /dev/myled0
-	sleep 0.1s
-	echo 0 > /dev/myled0
+	if [ $i -gt $LED_COUNT ] ; then
+		i=1
+	else
+		i=$(( i + 1 ))
+	fi
 
-	echo 2 > /dev/myled0
-	sleep 0.1s
-	echo 0 > /dev/myled0
-
-	echo 3 > /dev/myled0
-	sleep 0.1s
-	echo 0 > /dev/myled0
-
-	echo 4 > /dev/myled0
-	sleep 0.1s
-	echo 0 > /dev/myled0
-
-	echo 5 > /dev/myled0
-	sleep 0.1s
-	echo 0 > /dev/myled0
-
-	echo 6 > /dev/myled0
-	sleep 0.1s
-	echo 0 > /dev/myled0
-
-	echo 7 > /dev/myled0
-	sleep 0.1s
-	echo 0 > /dev/myled0
-
-	echo 8 > /dev/myled0
+	echo $i > /dev/myled0
 	sleep 0.1s
 	echo 0 > /dev/myled0
 	
