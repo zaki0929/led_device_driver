@@ -25,7 +25,7 @@ do
 
 	if [ $i -gt $LED_COUNT ] ; then
 		i=1
-	elif [ $i -lt 0 ] ; then
+	elif [ $i -lt 1 ] ; then
 		i=8
 	elif [ $SW2 = 0 ] ; then
 		i=$(( i + 1 ))
