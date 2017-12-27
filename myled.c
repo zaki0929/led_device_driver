@@ -5,7 +5,7 @@
 #include <linux/io.h>
 #include <asm/uaccess.h>
 
-#define LED_COUNT 3
+#define LED_COUNT 8
 
 MODULE_AUTHOR("Ryo Okazaki");
 MODULE_DESCRIPTION("driver for LED control");
@@ -16,21 +16,31 @@ static dev_t dev;
 static struct cdev cdv;
 static struct class *cls = NULL;
 static volatile u32 *gpio_base = NULL;
+static int led_number[8] = {21, 20, 16, 26, 19, 13, 6, 5};
+	
 
 static ssize_t led_write(struct file* flip, const char* buf, size_t count, loff_t* pos){
 	char c;
+	int i;
+
 	if(copy_from_user(&c, buf, sizeof(char))) return -EFAULT;
 
 	printk(KERN_INFO "receive %c\n", c);
 
-	if(c == '0') gpio_base[10] = 1 << 21;
-	else if(c == '1') gpio_base[7] = 1 << 21;
+	if(c == '0'){
+		for(i = 0; i < LED_COUNT; i++){	
+			gpio_base[10] = 1 << led_number[i];
+		}
+	}
 
-	if(c == '0') gpio_base[10] = 1 << 20;
-	else if(c == '2') gpio_base[7] = 1 << 20;
-
-	if(c == '0') gpio_base[10] = 1 << 16;
-	else if(c == '3') gpio_base[7] = 1 << 16;
+	if(c == '1') gpio_base[7] = 1 << led_number[0];
+	if(c == '2') gpio_base[7] = 1 << led_number[1];
+	if(c == '3') gpio_base[7] = 1 << led_number[2];
+	if(c == '4') gpio_base[7] = 1 << led_number[3];
+	if(c == '5') gpio_base[7] = 1 << led_number[4];
+	if(c == '6') gpio_base[7] = 1 << led_number[5];
+	if(c == '7') gpio_base[7] = 1 << led_number[6];
+	if(c == '8') gpio_base[7] = 1 << led_number[7];
 
 	return 1;
 }
@@ -42,8 +52,6 @@ static struct file_operations led_fops = {
 	
 static int __init init_mod(void){
 	int retval, i;
-	int led_number[3] = {21, 20, 16};
-	
 	gpio_base = ioremap_nocache(0x3f200000, 0xA0);
 
 	for(i = 0; i < LED_COUNT; i++){	
