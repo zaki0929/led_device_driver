@@ -7,7 +7,7 @@ Device driver that can handle 8 LEDs on Raspberry Pi.
 ## Requirements
 * Raspberry Pi 3 Model B
   * Raspbian
-* Linux kernel source
+* Linux Kernel Source
   * download kernel source into `/usr/src/linux`
   * kernel build scripts : [https://github.com/ryuichiueda/raspberry_pi_kernel_build_scripts](https://github.com/ryuichiueda)
 * 8 LEDs
