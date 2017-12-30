@@ -2,10 +2,14 @@
 Device driver that can handle 8 LEDs on Raspberry Pi.
 
 ## Demo
-[YouTube - led_device_driver demo](https://youtu.be/C0My8v6srMk)
+* [led_device_driver demo - YouTube](https://youtu.be/C0My8v6srMk)
 
 ## Requirements
 * Raspberry Pi 3 Model B
+  * Raspbian
+* Linux kernel source
+  * download kernel source into `/usr/src/linux`
+  * kernel build scripts : [https://github.com/ryuichiueda/raspberry_pi_kernel_build_scripts](https://github.com/ryuichiueda)
 * 8 LEDs
 * Resistor - 100[ohm]
 * Single-Pole/Double-Throw Switch
