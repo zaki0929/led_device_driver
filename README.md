@@ -31,3 +31,5 @@ Move into led_device_driver directory and run a shell script.
 cd led_device_driver
 ./myled.sh
 ```
+## License
+This repository is licensed under the GPLv3 license, see [LICENSE](./LICENSE).
