@@ -15,10 +15,14 @@ Device driver that can handle 8 LEDs on Raspberry Pi.
 * Single-Pole/Double-Throw Switch
 
 ## Installation
+### Software
 Download this repository.
 ```
 git clone git@github.com:zaki0929/led_device_driver.git
 ```
+### Hardware
+Connect leds, resistor, switch to Raspberry Pi as shown in schematic.
+![](./docs/images/led.png)
 
 ## Usage
 Move into led_device_driver directory and run a shell script.
